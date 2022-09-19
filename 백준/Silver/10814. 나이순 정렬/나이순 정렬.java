@@ -3,29 +3,46 @@ import java.util.*;
 
 public class Main {
 
+    public static class Var {
+        int age;
+        String name;
+
+        public Var(int age, String name) {
+            this.age = age;
+            this.name = name;
+        }
+
+        @Override
+        public String toString() {
+            return age + " " + name + "\n";
+        }
+    }
+
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringBuilder sb = new StringBuilder();
         int N = Integer.parseInt(br.readLine());
 
-        String[][] s_arr = new String[N][2];
+        Var[] var = new Var[N];
 
         StringTokenizer st;
         for (int i = 0; i < N; i++) {
             st = new StringTokenizer(br.readLine(), " ");
-            String a = st.nextToken();
+            int a = Integer.parseInt(st.nextToken());
             String b = st.nextToken();
-            s_arr[i][0] = a; s_arr[i][1] = b;
+            var[i] = new Var(a, b);
         }
 
-        Arrays.sort(s_arr, new Comparator<String[]>() {
+        Arrays.sort(var, new Comparator<Var>() {
             @Override
-            public int compare(String[] s1, String[] s2) {
-                return Integer.parseInt(s1[0]) - Integer.parseInt(s2[0]);
+            public int compare(Var var1, Var var2) {
+                return var1.age - var2.age;
             }
         });
 
         for (int i = 0; i < N; i++) {
-            System.out.println(s_arr[i][0] + " " + s_arr[i][1]);
+            sb.append(var[i]);
         }
+        System.out.println(sb);
     }
 }
