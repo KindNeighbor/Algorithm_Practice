@@ -12,34 +12,17 @@ class Solution {
                 }
             }
         }
-        int[] arr = new int[2];
-        if (cnt + zeroCount == 6) {
-            arr[0] = 1;
-        } else if (cnt + zeroCount == 5) {
-            arr[0] = 2;
-        } else if (cnt + zeroCount == 4) {
-            arr[0] = 3;
-        } else if (cnt + zeroCount == 3) {
-            arr[0] = 4;
-        } else if (cnt + zeroCount == 2) {
-            arr[0] = 5;
-        } else {
-            arr[0] = 6;
-        }
+        int max = 7 - (cnt + zeroCount);
+        int min = 7 - cnt;
+        if (max == 7) {max = 6;}
+        if (min == 7) {min = 6;}
         
-        if (cnt == 6) {
-            arr[1] = 1;
-        } else if (cnt == 5) {
-            arr[1] = 2;
-        } else if (cnt == 4) {
-            arr[1] = 3;
-        } else if (cnt == 3) {
-            arr[1] = 4;
-        } else if (cnt == 2) {
-            arr[1] = 5;
-        } else {
-            arr[1] = 6;
-        }
+        int[] arr = new int[2];
+        
+        arr[0] = max;
+        arr[1] = min;
+        
         return arr;
+        
     } 
 }
