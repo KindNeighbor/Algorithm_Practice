@@ -7,7 +7,8 @@ class Solution {
         for (int i = 0; i < id_list.length; i++) {
             reportSet[i] = new HashSet<>();
         }
-
+        
+        // 1. 유저가 신고한 사람 목록
         for (int i = 0; i < report.length; i++) {
             String[] s1 = report[i].split(" ");
             for (int j = 0; j < id_list.length; j++) {
@@ -17,6 +18,7 @@ class Solution {
             }
         }
 
+        // 2. 신고당한 횟수 확인
         int[] arr1 = new int[id_list.length];
         for (int i = 0; i < id_list.length; i++) {
             for (String s : reportSet[i]) {
@@ -28,6 +30,7 @@ class Solution {
             }
         }
 
+        // 3. 신고한 사람 중 k번 이상 신고당한 사람이 몇 명인지 확인
         int[] arr2 = new int[id_list.length];
         for (int i = 0; i < arr1.length; i++) {
             for (int j = 0; j < arr1.length; j++) {
