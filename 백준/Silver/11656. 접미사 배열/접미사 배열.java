@@ -6,26 +6,18 @@ public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String s = br.readLine();
-        String[] sArr = new String[s.length()];
+
+        ArrayList<String> list = new ArrayList<>();
 
         for (int i = 0; i < s.length(); i++) {
-            StringBuilder sb = new StringBuilder();
-            for (int j = i; j < s.length(); j++) {
-                sb.append(s.charAt(j));
-            }
-            sArr[i] = sb.toString();
+            list.add(s.substring(i));
         }
 
-        Arrays.sort(sArr, new Comparator<String>() {
-            @Override
-            public int compare(String o1, String o2) {
-                return o1.compareTo(o2);
-            }
-        });
+        Collections.sort(list);
 
         StringBuilder sb1 = new StringBuilder();
-        for (int i = 0; i < sArr.length; i++) {
-            sb1.append(sArr[i]).append("\n");
+        for (int i = 0; i < list.size(); i++) {
+            sb1.append(list.get(i)).append("\n");
         }
 
         System.out.println(sb1);
