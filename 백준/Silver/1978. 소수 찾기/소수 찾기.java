@@ -1,35 +1,37 @@
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.IOException;
+import java.io.*;
+import java.math.BigInteger;
 import java.util.StringTokenizer;
+
 
 public class Main {
     public static void main(String[] args) throws IOException {
-             
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
         int N = Integer.parseInt(br.readLine());
-        int count = 0;
-        
-        StringTokenizer st = new StringTokenizer(br.readLine()," ");
-        
-        while(st.hasMoreTokens()) {
-            boolean Prime = true;
-            
+
+        StringTokenizer st = new StringTokenizer(br.readLine());
+
+        int cnt = 0;
+        for (int i = 0; i < N; i++) {
             int a = Integer.parseInt(st.nextToken());
-            
-            if(a == 1) {
-                continue;
-            }
-            for(int i=2; i<a; i++) {
-                if(a % i == 0) {
-                    Prime = false;
-                    break;
-                }
-            }
-            if(Prime) {
-                count++;
+            if (findPrime(a)) {
+                cnt++;
             }
         }
-        System.out.println(count);
+        System.out.println(cnt);
+    }
+
+    public static boolean findPrime(int x) {
+
+        if (x == 1) {
+            return false;
+        }
+
+        for (int i = 2; i < x; i++) {
+            if (x % i == 0) {
+                return false;
+            }
+        }
+        return true;
     }
 }
