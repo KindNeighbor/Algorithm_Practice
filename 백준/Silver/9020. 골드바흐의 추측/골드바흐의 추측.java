@@ -1,39 +1,44 @@
 import java.io.*;
 
+
 public class Main {
 
-    public static boolean[] prime = new boolean[10001];
+    static boolean[] check;
 
     public static void main(String[] args) throws IOException {
-
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringBuilder sb;
 
-        get_prime();
+        findPrime();
 
-        int N = Integer.parseInt(br.readLine());
-        while(N-- > 0) {
-            int n = Integer.parseInt(br.readLine());
-            int a = n / 2;
-            int b = n / 2;
-            while(true) {
-                if(prime[a] == false && prime[b] == false) {
-                    System.out.println(a + " " + b);
+        int T = Integer.parseInt(br.readLine());
+        for (int i = 0; i < T; i++) {
+            sb = new StringBuilder();
+            int N = Integer.parseInt(br.readLine());
+            int a = N / 2;
+            int b = N / 2;
+
+            while (true) {
+                if (!check[a] && !check[b]) {
+                    sb.append(a).append(" ").append(b);
                     break;
                 }
-                a--;
-                b++;
+                a--; b++;
             }
+
+            System.out.println(sb);
         }
     }
 
-    public static void get_prime() {
-        prime[0] = prime[1] = true;
+    public static void findPrime() {
+        check = new boolean[10001];
+        check[0] = true;
+        check[1] = true;
 
-        for (int i = 2; i <= Math.sqrt(prime.length); i++) {
-            if (prime[i])
-                continue;
-            for (int j = i * i; j < prime.length; j += i) {
-                prime[j] = true;
+        for (int i = 2; i <= Math.sqrt(check.length); i++) {
+            if (check[i]) continue;
+            for (int j = i*i; j < check.length; j += i) {
+                check[j] = true;
             }
         }
     }
