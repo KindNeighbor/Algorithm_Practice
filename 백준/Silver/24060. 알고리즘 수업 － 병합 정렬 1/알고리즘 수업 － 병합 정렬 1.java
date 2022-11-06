@@ -1,71 +1,70 @@
-import java.io.*;
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class Main {
-
-    public static int N,K;
-    public static int cnt = 0;
-    public static int[] sorted;
-    public static ArrayList<Integer> list = new ArrayList<>();
-
+    static int count=0;
+    static int K;
+    static int result=-1;
+    static int[] tmp;
     public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer st = new StringTokenizer(br.readLine(), " ");
-        N = Integer.parseInt(st.nextToken());
-        K = Integer.parseInt(st.nextToken());
-        int[] A = new int[N];
-        sorted = new int[A.length];
+        BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
 
+        String[] num=br.readLine().split(" ");
 
-        st = new StringTokenizer(br.readLine(), " ");
-        for (int i = 0; i < N; i++) {
-            A[i] = Integer.parseInt(st.nextToken());
+        int[] A=new int[Integer.parseInt(num[0])];
+        K=Integer.parseInt(num[1]);
+        tmp = new int[A.length];
+
+        String[] nums=br.readLine().split(" ");
+
+        for (int i=0;i<A.length;i++){
+            A[i]=Integer.parseInt(nums[i]);
         }
+        merge_sort(A,0,A.length-1);
+        System.out.println(result);
 
-        mergeSort(A, 0, A.length - 1);
-        if (K > cnt) {
-            System.out.println("-1");
-        } else {
-            System.out.println(list.get(K-1));
+    }
+
+    public static void merge_sort(int[] A,int p,int r){
+
+
+        if(p<r){
+            int q=Math.abs((p+r)/2);
+
+            merge_sort(A,p,q);
+
+            merge_sort(A,q+1,r);
+            merge(A,p,q,r);
         }
 
     }
 
-    public static void mergeSort(int[] arr, int p, int r) {
-        if (p < r) {
-            int q = (p + r) / 2;
-            mergeSort(arr, p, q);
-            mergeSort(arr, q + 1, r);
-            merge(arr, p, q, r);
-        }
-    }
-
-    public static void merge(int[] arr, int p, int q, int r) {
-        int i = p;
-        int j = q + 1;
-        int t = 0;
-
-        while(i <= q && j <= r) {
-            if (arr[i] <= arr[j]) {
-                sorted[t++] = arr[i++];
+    public static void merge(int[] A,int start,int mid,int end){
+        int i=start ,j=mid+1, t=0;
+        while (i<=mid && j<=end) {
+            if(A[i] <= A[j]){
+                tmp[t++]=A[i++];
             } else {
-                sorted[t++] = arr[j++];
+                tmp[t++]=A[j++];
             }
         }
-
-        while(i <= q) {
-            sorted[t++] = arr[i++];
-        }
-        while(j <= r) {
-            sorted[t++] = arr[j++];
+        while (i <= mid) {
+            tmp[t++] = A[i++];
         }
 
-        i = p; t = 0;
+        while (j <= end) {
+            tmp[t++]=A[j++];
+        }
 
-        while(i <= r) {
-            cnt++;
-            list.add(sorted[t]);
-            arr[i++] = sorted[t++];
+        i = start; t = 0;
+        while (i <= end) { 
+            count++;
+            if(count == K){
+                result = tmp[t];
+                break;
+            }
+            A[i++]=tmp[t++];
         }
     }
 }
