@@ -23,11 +23,11 @@ public class Main {
             }
         }
 
-        dfs(0,0 );
+        backTracking(0,0);
         System.out.println(min);
     }
 
-    public static void dfs(int depth, int start) {
+    public static void backTracking(int depth, int start) {
         if (depth == N / 2) {
             subtract();
             return;
@@ -35,7 +35,7 @@ public class Main {
 
         for (int i = start; i < N; i++) {
             check[i] = true;
-            dfs(depth + 1, i + 1);
+            backTracking(depth + 1, i + 1);
             check[i] = false;
         }
     }
@@ -46,10 +46,10 @@ public class Main {
 
         for (int i = 0; i < N - 1; i++) {
             for (int j = i + 1; j < N; j++) {
-                if (check[i] == true && check[j] == true) {
+                if (check[i]&& check[j]) {
                     teamA += map[i][j];
                     teamA += map[j][i];
-                } else if (check[i] == false && check[j] == false) {
+                } else if (!check[i]&& !check[j]) {
                     teamB += map[i][j];
                     teamB += map[j][i];
                 }
