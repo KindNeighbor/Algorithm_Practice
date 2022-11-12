@@ -17,13 +17,13 @@ public class Main {
         arr = new int[b];
         visited = new boolean[a];
 
-        dfs(1,0);
+        backTracking(0,0);
         System.out.println(sb);
 
     }
 
-    public static void dfs(int x, int y) {
-        if(y == b) {
+    public static void backTracking(int x, int depth) {
+        if (depth == b) {
             for (int i : arr) {
                 sb.append(i).append(" ");
             }
@@ -31,9 +31,13 @@ public class Main {
             return;
         }
 
-        for (int i = x; i <= a; i++) {
-                arr[y] = i;
-                dfs(i + 1, y + 1);
+        for (int i = x; i < a; i++) {
+            if (!visited[i]) {
+                visited[i] = true;
+                arr[depth] = i + 1;
+                backTracking(i + 1,depth + 1);
+                visited[i] = false;
+            }
         }
     }
 }
