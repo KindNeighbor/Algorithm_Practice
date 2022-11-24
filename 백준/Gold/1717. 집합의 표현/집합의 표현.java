@@ -50,7 +50,13 @@ public class Main {
         int A = find(a);
         int B = find(b);
 
-        arr[B] = A;
+        if (A != B) {
+            if (A < B) {
+                arr[B] = A;
+            } else {
+                arr[A] = B;
+            }
+        }
     }
 
     public static boolean isUnion(int a, int b) {
