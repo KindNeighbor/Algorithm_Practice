@@ -34,7 +34,7 @@ public class Main {
             Var var = pq.poll();
 
             if (var.idx == K) {
-                time = Math.min(time, var.time);
+                time = var.time;
             }
 
             if (var.idx * 2 <= 100000 && !visited[var.idx * 2]) {
