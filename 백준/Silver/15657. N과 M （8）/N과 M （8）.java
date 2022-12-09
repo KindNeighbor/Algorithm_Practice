@@ -9,7 +9,6 @@ public class Main {
     static int N,M;
     static int[] arr;
     static int[] arr1;
-    public static boolean[] visited;
 
     static StringBuilder sb = new StringBuilder();
 
@@ -22,7 +21,6 @@ public class Main {
 
         arr = new int[N];
         arr1 = new int[M];
-        visited = new boolean[N];
 
         st = new StringTokenizer(br.readLine(), " ");
         for (int i = 0; i < N; i++) {
