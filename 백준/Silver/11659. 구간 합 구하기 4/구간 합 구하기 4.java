@@ -1,7 +1,6 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public class Main {
@@ -12,22 +11,16 @@ public class Main {
 
         int N = Integer.parseInt(st.nextToken());
         int M = Integer.parseInt(st.nextToken());
-
-        int[] arr = new int[N];
+        
         int[] sum = new int[N + 1]; // 누적되는 합의 배열
 
-        st = new StringTokenizer(br.readLine(), " ");
-        for (int i = 0; i < N; i++) {
-            arr[i] = Integer.parseInt(st.nextToken());
-        }
-
         sum[0] = 0;
+        st = new StringTokenizer(br.readLine(), " ");
         for (int i = 1; i < N + 1; i++) {
-            sum[i] = sum[i - 1] + arr[i - 1]; // sum[2]라면 arr[0] + arr[1] 이 된다.
+            sum[i] = sum[i - 1] + Integer.parseInt(st.nextToken()); // sum[2]라면 arr[0] + arr[1] 이 된다.
         }
 
         StringBuilder sb = new StringBuilder();
-        
         for (int i = 0; i < M; i++) {
             st = new StringTokenizer(br.readLine(), " ");
             int a = Integer.parseInt(st.nextToken());
