@@ -4,11 +4,11 @@
 
 ### 성능 요약
 
-메모리: 17336 KB, 시간: 188 ms
+메모리: 17468 KB, 시간: 192 ms
 
 ### 분류
 
-자료 구조(data_structures), 분리 집합(disjoint_set), 그래프 이론(graphs), 그래프 탐색(graph_traversal)
+자료 구조, 그래프 이론, 그래프 탐색, 분리 집합
 
 ### 문제 설명
 
