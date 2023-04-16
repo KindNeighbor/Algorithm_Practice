@@ -7,8 +7,8 @@ public class Main {
     static int[][] map;
     static int cnt;
     
-    static int[] dx = {-1, 0, 1, 0};
-    static int[] dy = {0, 1, 0, -1};
+    static int[] dr = {-1, 0, 1, 0};
+    static int[] dc = {0, 1, 0, -1};
     
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -40,22 +40,22 @@ public class Main {
         
         for (int i = 0; i < 4; i++) {
             d = (d + 3) % 4;
-            int nx = r + dx[d];
-            int ny = c + dy[d];
+            int nr = r + dr[d];
+            int nc = c + dc[d];
             
-            if (nx >= 0 && ny >= 0 && nx < N && ny < M && map[nx][ny] == 0) {
+            if (nr >= 0 && nc >= 0 && nr < N && nc < M && map[nr][nc] == 0) {
                 cnt++;
-                dfs(nx, ny, d);
+                dfs(nr, nc, d);
                 return;
             }
         }
         
         int back = (d + 2) % 4;
-        int bx = r + dx[back];
-        int by = c + dy[back];
+        int backR = r + dr[back];
+        int backC = c + dc[back];
         
-        if(bx >= 0 && by >= 0 && bx < N && by < M && map[bx][by] != 1) {
-			dfs(bx, by, d);
+        if(backR >= 0 && backC >= 0 && backR < N && backC < M && map[backR][backC] != 1) {
+			dfs(backR, backC, d);
 		}
     }
 }
