@@ -20,30 +20,23 @@ public class Main {
                 sb.append('-');
             }
 
-            recursion(1, num);
+            recursion(0, num);
             System.out.println(sb.toString());
         }
     }
 
-    public static void recursion(int a, int b) {
-        if (a == b) {
+    public static void recursion(int start, int size) {
+        if (size == 1) {
             return;
         }
 
-        if (sb.charAt((b + a) / 2 - 1) == ' ') {
-            return;
-        }
-
-        int c = (b - a + 1) / 3;
-
-        for (int i = ((a + b) / 2) - ((c - 1) / 2) - 1; i < ((a + b) / 2) + ((c - 1) / 2); i++) {
+        int changeSize = size / 3;
+        
+        for (int i = start + changeSize; i < start + changeSize * 2; i++) {
             sb.setCharAt(i, ' ');
         }
 
-        int d = ((a + b) / 2) - ((c - 1) / 2) - 1;
-        int e = ((a + b) / 2) + ((c - 1) / 2) + 1;
-
-        recursion(a, d);
-        recursion(e, b);
+        recursion(start, changeSize);
+        recursion(start + changeSize * 2, changeSize);
     }
 }
