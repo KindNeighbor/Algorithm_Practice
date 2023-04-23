@@ -9,53 +9,44 @@ class Solution {
         map.put(c, map.getOrDefault(c, 0) + 1);
         map.put(d, map.getOrDefault(d, 0) + 1);
         
-        HashSet<Integer> set = new HashSet<>();
-        int[] arr = new int[2];
-        int idx = 0;
-        int min = 10;
-        
         int p = 0;
         int q = 0;
+        int r = 0;
+        int ans = 1;
         
         if (map.size() == 1) {
             return 1111 * a;
+            
         } else if (map.size() == 2) {
-            for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
-                if (entry.getValue() == 3) {
-                    p = entry.getKey();
-                } else if (entry.getValue() == 1) {
-                    q = entry.getKey();
-                } else if (entry.getValue() == 2) {
-                    set.add(entry.getKey());
+            for (int i : map.keySet()) {
+                if (map.get(i) == 3) {
+                    p = i;
+                } else if (map.get(i) == 1) {
+                    q = i;
+                } else {
+                    if (r == 0) {
+                        r = i;
+                    } else {
+                        return (r + i) * Math.abs(r - i);
+                    }
                 }
             }
             
-            if (set.size() == 0) {
-                return (10 * p + q) * (10 * p + q);
-            } else {
-                for (int num : set) {
-                    arr[idx] = num;
-                    idx++;
-                }
-                return (arr[0] + arr[1]) * Math.abs(arr[0] - arr[1]);
-            }
+            return (10 * p + q) * (10 * p + q);
+            
         } else if (map.size() == 3) {
-            for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
-                if (entry.getValue() == 2) {
-                    p = entry.getKey();
-                } else if (entry.getValue() == 1) {
-                    arr[idx] = entry.getKey();
-                    idx++;
-                } 
+            
+            for (int i : map.keySet()) {
+                if (map.get(i) == 1) {
+                    ans *= i;
+                }
             }
             
-            return arr[0] * arr[1];
+            return ans;
             
         } else {
-            min = Math.min(a, b);
-            min = Math.min(min, c);
-            min = Math.min(min, d);
-            return min;
+            
+            return Math.min(a, Math.min(b, Math.min(c, d)));
         }
     }
 }
