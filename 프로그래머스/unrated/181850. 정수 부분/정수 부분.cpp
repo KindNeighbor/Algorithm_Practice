@@ -4,6 +4,6 @@
 using namespace std;
 
 int solution(double flo) {
-    int answer = static_cast<int>(flo);
+    int answer = (int)flo;
     return answer;
 }
