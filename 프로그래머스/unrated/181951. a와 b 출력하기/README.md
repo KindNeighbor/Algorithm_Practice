@@ -1,10 +1,10 @@
 # [unrated] a와 b 출력하기 - 181951 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/181951) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/181951?language=cpp) 
 
 ### 성능 요약
 
-메모리: 7.63 MB, 시간: 11.98 ms
+메모리: 4.14 MB, 시간: 2.03 ms
 
 ### 구분
 
