@@ -17,10 +17,9 @@ vector<int> solution(vector<int> arr, vector<vector<int>> queries) {
         
         if (min == 1000001) {
             answer.push_back(-1);
-            continue;
+        } else {
+            answer.push_back(min);
         }
-        
-        answer.push_back(min);
     }
 
     return answer;
