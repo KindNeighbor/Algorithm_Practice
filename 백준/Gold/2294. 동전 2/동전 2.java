@@ -12,7 +12,7 @@ public class Main {
         int[] coin = new int[101];
         int[] dp = new int[10001];
         
-        for (int i = 1; i <= n; i++) {
+        for (int i = 0; i < n; i++) {
             coin[i] = Integer.parseInt(br.readLine());
         }
         
@@ -20,7 +20,7 @@ public class Main {
             dp[i] = 10001;
         }
         
-        for (int i = 1; i <= n; i++) {
+        for (int i = 0; i < n; i++) {
             for (int j = coin[i]; j <= k; j++) {
                 dp[j] = Math.min(dp[j], dp[j - coin[i]] + 1);
             }
