@@ -7,7 +7,7 @@ int main() {
     
     cin >> n >> k;
     
-    int coin[101];
+    int coin[n];
     int dp[10001];
     
     for (int i = 0; i < n; i++) {
