@@ -1,31 +1,23 @@
+import java.util.*;
+
 class Solution {
     public int[] solution(int[] arr, int[] query) {
         
         int start = 0;
-        int end = 0;
+        int end = arr.length - 1;
         
         for (int i = 0; i < query.length; i++) {
             if (i % 2 == 0) {
-                end = start + query[i];
+                end = start + query[i] + 1;
             } else {
                 start += query[i];
             }
         }
         
-        int[] empty = {-1};
-        
         if (end - start == 0) {
-            return empty;
+            return new int[]{-1};
         }
         
-        int[] ans = new int[end - start];
-        int idx = start;
-        
-        for (int i = 0; i < ans.length; i++) {
-            ans[i] = arr[idx];
-            idx++;
-        }
-        
-        return ans;
+        return Arrays.copyOfRange(arr, start, end);
     }
 }

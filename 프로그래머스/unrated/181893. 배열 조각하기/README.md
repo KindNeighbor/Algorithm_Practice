@@ -1,10 +1,10 @@
 # [unrated] 배열 조각하기 - 181893 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/181893?language=java) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/181893) 
 
 ### 성능 요약
 
-메모리: 74.6 MB, 시간: 0.02 ms
+메모리: 78.2 MB, 시간: 0.02 ms
 
 ### 구분
 
@@ -21,13 +21,11 @@ Empty
 <p><code>query</code>를 순회하면서 다음 작업을 반복합니다.</p>
 
 <ul>
-<li>짝수 인덱스에서는 <code>arr</code>에서 <code>query[i]</code>번 인덱스를 포함하여 배열의 <code>query[i]</code>번 인덱스 뒷부분을 잘라서 버립니다.</li>
+<li>짝수 인덱스에서는 <code>arr</code>에서 <code>query[i]</code>번 인덱스를 제외하고 배열의 <code>query[i]</code>번 인덱스 뒷부분을 잘라서 버립니다.</li>
 <li>홀수 인덱스에서는 <code>arr</code>에서 <code>query[i]</code>번 인덱스는 제외하고 배열의 <code>query[i]</code>번 인덱스 앞부분을 잘라서 버립니다.</li>
 </ul>
 
 <p>위 작업을 마친 후 남은 <code>arr</code>의 부분 배열을 return 하는 solution 함수를 완성해 주세요.</p>
-
-<p>단, 빈 배열을 return 해야 하는 경우 [-1]을 대신 return 합니다.</p>
 
 <hr>
 
@@ -59,7 +57,7 @@ Empty
         <tbody><tr>
 <td>[0, 1, 2, 3, 4, 5]</td>
 <td>[4, 1, 2]</td>
-<td>[1, 2]</td>
+<td>[1, 2, 3]</td>
 </tr>
 </tbody>
       </table>
@@ -83,26 +81,30 @@ Empty
         <tbody><tr>
 <td>4</td>
 <td>[0, 1, 2, 3, 4, 5]</td>
-<td>[0, 1, 2, 3]</td>
+<td>[0, 1, 2, 3, 4]</td>
 <td>0번 인덱스의 쿼리이므로 뒷부분을 자른다.</td>
 </tr>
 <tr>
 <td>1</td>
-<td>[0, 1, 2, 3]</td>
-<td>[1, 2, 3]</td>
+<td>[0, 1, 2, 3, 4]</td>
+<td>[1, 2, 3, 4]</td>
 <td>1번 인덱스의 쿼리이므로 앞부분을 자른다.</td>
 </tr>
 <tr>
 <td>2</td>
+<td>[1, 2, 3, 4]</td>
 <td>[1, 2, 3]</td>
-<td>[1, 2]</td>
 <td>2번 인덱스의 쿼리이므로 뒷부분을 자른다.</td>
 </tr>
 </tbody>
       </table>
 <ul>
-<li>따라서 [1, 2]를 return 합니다.</li>
+<li>따라서 [1, 2, 3]을 return 합니다.</li>
 </ul>
+
+<hr>
+
+<p>※2023년 04월 24일 지문과 테스트 케이스가 수정되었습니다. 기존에 제출한 코드가 통과하지 못할 수 있습니다.</p>
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://programmers.co.kr/learn/challenges
