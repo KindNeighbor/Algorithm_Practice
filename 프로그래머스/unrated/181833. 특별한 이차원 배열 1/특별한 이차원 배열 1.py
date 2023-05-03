@@ -4,4 +4,5 @@ def solution(n):
         for j in range(n):
             if i == j:
                 a[i][j] = 1
+                break
     return a
