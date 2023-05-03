@@ -1,10 +1,11 @@
 def solution(arr, flag):
     a = []
     for i in range(len(arr)):
+        b = arr[i]
         if flag[i]:
-            b = arr[i] * 2
-            for j in range(b):
+            for j in range(b*2):
                 a.append(arr[i])
         else:
-            a = a[:-arr[i]]
+            for j in range(b):
+                a.pop()
     return a
