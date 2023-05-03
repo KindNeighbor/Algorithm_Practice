@@ -1,15 +1,17 @@
 import sys
 
-a = int(input())
-dic = {}
+n = int(sys.stdin.readline())
+d = dict()
 
-for i in range(a):
-    name, s = input().split()
-    dic[name] = s
-    if s == "leave":
-        del dic[name]
-b = sorted(dic.items(), reverse=True)
-dic = dict(b)
+for x in range(n):
+    a, b = map(str, sys.stdin.readline().split())
+    
+    if b == "enter":
+        d[a] = b
+    else:
+        del d[a]
+        
+d = sorted(d.keys(), reverse=True)
 
-for k in dic.keys():
-    print(k)
+for i in d:
+    print(i)
