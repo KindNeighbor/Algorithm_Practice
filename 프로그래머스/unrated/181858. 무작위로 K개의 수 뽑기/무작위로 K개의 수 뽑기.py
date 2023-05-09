@@ -1,9 +1,9 @@
 def solution(arr, k):
-    a = []
+    a = set()
     b = []
     for x in arr:
         if x not in a:
-            a.append(x)
+            a.add(x)
             b.append(x)
             if len(b) == k:
                 break
