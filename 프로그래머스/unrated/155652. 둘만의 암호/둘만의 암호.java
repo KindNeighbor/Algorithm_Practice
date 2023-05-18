@@ -6,23 +6,22 @@ class Solution {
         for (int i = 0; i < skip.length(); i++) {
             alpha[skip.charAt(i) - 'a'] = 1;
         }
-
-        String ss = "";
+        
+        StringBuilder sb = new StringBuilder();
         for (int i = 0; i < s.length(); i++) {
             int a = s.charAt(i) - 'a';
             for (int j = 0; j < index; j++) {
-                if (a == 25) {
-                    a = 0;
-                } else {
-                    a++;
-                }
+                
+                if (a == 25) a = 0;
+                else a++;
+                
                 if (alpha[a] == 1) {
                     j--;
                     continue;
                 }
             }
-            ss += (char)(a + 'a');
+            sb.append((char)(a + 'a'));
         }
-        return ss;
+        return sb.toString();
     }
 }
