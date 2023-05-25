@@ -1,0 +1,60 @@
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+int white = 0;
+int blue = 0;
+vector<vector<int>> v;
+
+void sol(int row, int col, int size);
+bool colorCheck(int row, int col, int size);
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+    
+    int N;
+    cin >> N;
+    v.resize(N, vector<int>(N));
+    
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < N; j++) {
+            cin >> v[i][j];
+        }
+    }
+    
+    sol(0, 0, N);
+    
+    cout << white << '\n';
+    cout << blue << '\n';
+    
+    return 0;
+}
+
+void sol(int row, int col, int size) {
+    if (colorCheck(row, col, size)) {
+        if (v[row][col] == 0) white++;
+        else blue++;
+        return;
+    }
+    
+    int newboard = size / 2;
+    sol(row, col, newboard);
+    sol(row + newboard, col, newboard);
+    sol(row, col + newboard, newboard);
+    sol(row + newboard, col + newboard, newboard);
+}
+
+bool colorCheck(int row, int col, int size) {
+    int color = v[row][col];
+    
+    for (int i = row; i < row + size; i++) {
+        for (int j = col; j < col + size; j++) {
+            if (v[i][j] != color) {
+                return false;
+            }
+        }
+    }
+    return true;
+}
