@@ -16,8 +16,8 @@ int main() {
     
     int N;
     cin >> N;
-    v.resize(N, vector<int>(N));
     
+    v.resize(N, vector<int>(N));
     for (int i = 0; i < N; i++) {
         for (int j = 0; j < N; j++) {
             cin >> v[i][j];
@@ -39,11 +39,11 @@ void sol(int row, int col, int size) {
         return;
     }
     
-    int newboard = size / 2;
-    sol(row, col, newboard);
-    sol(row + newboard, col, newboard);
-    sol(row, col + newboard, newboard);
-    sol(row + newboard, col + newboard, newboard);
+    int newSize = size / 2;
+    sol(row, col, newSize);
+    sol(row + newSize, col, newSize);
+    sol(row, col + newSize, newSize);
+    sol(row + newSize, col + newSize, newSize);
 }
 
 bool colorCheck(int row, int col, int size) {
@@ -51,7 +51,7 @@ bool colorCheck(int row, int col, int size) {
     
     for (int i = row; i < row + size; i++) {
         for (int j = col; j < col + size; j++) {
-            if (v[i][j] != color) {
+            if (color != v[i][j]) {
                 return false;
             }
         }
