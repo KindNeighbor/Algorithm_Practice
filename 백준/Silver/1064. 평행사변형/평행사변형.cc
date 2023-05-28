@@ -42,7 +42,6 @@ int main() {
     l2 = (acLen + bcLen) * 2;
     l3 = (abLen + acLen) * 2;
     
-    cout << fixed;
     cout.precision(16);
     
     cout << max(l1, max(l2, l3)) - min(l1, min(l2, l3)) << '\n';
