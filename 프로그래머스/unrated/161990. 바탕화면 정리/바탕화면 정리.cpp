@@ -5,8 +5,8 @@
 using namespace std;
 
 vector<int> solution(vector<string> wallpaper) {
-    int xMin = 52;
-    int yMin = 52;
+    int xMin = 51;
+    int yMin = 51;
     int xMax = -1;
     int yMax = -1;
     for (int i = 0; i < wallpaper.size(); i++) {
