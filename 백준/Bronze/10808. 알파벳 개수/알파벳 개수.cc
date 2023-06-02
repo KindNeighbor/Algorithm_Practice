@@ -6,9 +6,6 @@ using namespace std;
 int main() {
     vector<int> v;
     v.resize(26);
-    for (int i = 0; i < 26; i++) {
-        v[i] = 0;
-    }
     
     string s;
     cin >> s;
