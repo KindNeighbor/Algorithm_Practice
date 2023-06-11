@@ -17,9 +17,7 @@ int main() {
         int a, b;
         cin >> a >> b;
         for (int j = a; j <= (b - a) / 2 + a; j++) {
-            int tmp = arr[j];
-            arr[j] = arr[b-j+a];
-            arr[b-j+a] = tmp;
+            swap(arr[j], arr[b + a - j]);
         }
     }
     
