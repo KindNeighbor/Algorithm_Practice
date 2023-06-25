@@ -1,0 +1,22 @@
+import java.util.*;
+
+public class Solution {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String a = sc.next();
+        
+        StringBuilder sb = new StringBuilder();
+        
+        for (int i = 0; i < a.length(); i++) {
+            if (a.charAt(i) >= 'a' && a.charAt(i) <= 'z') {
+                char c = (char)(a.charAt(i) - 'a' + 'A');
+                sb.append(c);
+            } else if (a.charAt(i) >= 'A' && a.charAt(i) <= 'Z') {
+                char c = (char)(a.charAt(i) - 'A' + 'a');
+                sb.append(c);
+            }
+        }
+        
+        System.out.println(sb);
+    }
+}
