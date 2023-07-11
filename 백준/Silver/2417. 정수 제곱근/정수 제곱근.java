@@ -5,7 +5,7 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         long a = Long.parseLong(br.readLine());
         
-        long l = 1;
+        long l = 0;
         long r = a;
         long ans = 0;
         while (l < r) {
