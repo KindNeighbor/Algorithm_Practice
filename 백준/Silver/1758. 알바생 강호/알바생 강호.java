@@ -17,7 +17,8 @@ public class Main {
         int idx = 0;
         for (int i = N - 1; i >= 0; i--) {
             if (arr[i] - idx < 0) {
-                break;
+                idx++;
+                continue;
             } else {
                 sum += arr[i] - idx;
                 idx++;
