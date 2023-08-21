@@ -28,7 +28,8 @@ public class Main {
         for (int i = 0; i < M; i++) {
             int c = Integer.parseInt(st.nextToken());
             dq.addFirst(c);
-            sb.append(dq.removeLast()).append(" ");
+            int b = dq.removeLast();
+            sb.append(b).append(" ");
         }
         
         System.out.println(sb);
