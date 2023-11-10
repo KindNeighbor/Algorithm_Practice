@@ -11,6 +11,7 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int V = Integer.parseInt(br.readLine());
         list = new ArrayList[V + 1];
+        check = new boolean[V + 1];
 
         for (int i = 0; i <= V; i++) {
             list[i] = new ArrayList<>();
@@ -28,18 +29,17 @@ public class Main {
             list[node2].add(new Node(node1, weight));
         }
 
-        check = new boolean[V + 1];
-        check[1] = true;
+        max = 0;
         dfs(1, 0);
-        
-        
         check = new boolean[V + 1];
-        check[startNode] = true;
+        max = 0;
         dfs(startNode, 0);
         System.out.println(max);
     }
 
     public static void dfs(int node, int weight) {
+        if (check[node]) return;
+        check[node] = true;
 
         if (weight > max) {
             max = weight;
@@ -48,7 +48,6 @@ public class Main {
 
         for (Node n : list[node]) {
             if (!check[n.end]) {
-                check[n.end] = true;
                 dfs(n.end, weight + n.weight);
             }
         }
