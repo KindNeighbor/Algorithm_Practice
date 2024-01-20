@@ -9,9 +9,9 @@ public class Main {
         int V = Integer.parseInt(st.nextToken());
         int E = Integer.parseInt(st.nextToken());
         
-         ArrayList<Edge>[] graph = new ArrayList[V + 1];
-        for (int i = 1; i <= V; i++) {
-            graph[i] = new ArrayList<>();
+        ArrayList<ArrayList<Edge>> graph = new ArrayList<>();
+        for (int i = 0; i <= V; i++) {
+            graph.add(new ArrayList<>());
         }
 
         for (int i = 0; i < E; i++) {
@@ -19,15 +19,15 @@ public class Main {
             int A = Integer.parseInt(st.nextToken());
             int B = Integer.parseInt(st.nextToken());
             int C = Integer.parseInt(st.nextToken());
-            graph[A].add(new Edge(B, C));
-            graph[B].add(new Edge(A, C));
+            graph.get(A).add(new Edge(B, C));
+            graph.get(B).add(new Edge(A, C));
         }
 
         int result = prim(graph, V);
         System.out.println(result);
     }
 
-    static int prim(ArrayList<Edge>[] graph, int V) {
+    static int prim(ArrayList<ArrayList<Edge>> graph, int V) {
         boolean[] visited = new boolean[V + 1];
         PriorityQueue<Edge> priorityQueue = new PriorityQueue<>();
         
@@ -43,9 +43,9 @@ public class Main {
                 visited[u] = true;
                 totalWeight += current.weight;
 
-                for (Edge edge : graph[u]) {
+                for (Edge edge : graph.get(u)) {
                     if (!visited[edge.destination]) {
-                        priorityQueue.add(edge);
+                        priorityQueue.add(new Edge(edge.destination, edge.weight));
                     }
                 }
             }
