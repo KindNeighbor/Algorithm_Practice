@@ -3,6 +3,6 @@ while True:
     if A == '#':
         break;
     if int(B) > 17 or int(C) >= 80:
-        print(A, "Senior", sep=" ")
+        print(A, "Senior")
     else:
-        print(A, "Junior", sep=" ")
+        print(A, "Junior")
