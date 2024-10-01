@@ -1,13 +1,18 @@
-A, B = input().split(" ")
+a, b = input().split()
 
-alist = list(A)
-blist = list(B)
+listA = list(a)
+listB = list(b)
 
-a = int(''.join(alist[::-1]))
-b = int(''.join(blist[::-1]))
+listA.reverse()
+listB.reverse()
 
-if a > b:
-    print(a)
+strRa = ''.join(listA)
+strRb = ''.join(listB)
+
+intA = int(strRa)
+intB = int(strRb)
+
+if intA > intB:
+    print(intA)
 else:
-    print(b)
-
+    print(intB)
