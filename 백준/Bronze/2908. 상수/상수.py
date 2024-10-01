@@ -1,16 +1,10 @@
 a, b = input().split()
 
-listA = list(a)
-listB = list(b)
+strA = a[::-1]
+strB = b[::-1]
 
-listA.reverse()
-listB.reverse()
-
-strRa = ''.join(listA)
-strRb = ''.join(listB)
-
-intA = int(strRa)
-intB = int(strRb)
+intA = int(strA)
+intB = int(strB)
 
 if intA > intB:
     print(intA)
