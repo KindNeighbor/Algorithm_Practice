@@ -1,8 +1,11 @@
-n = input()
-numbers = list(input())
-sum = 0
+import sys
 
-for i in numbers:
-    sum = sum + int(i)
+N = int(sys.stdin.readline())
+S = sys.stdin.readline()
 
-print(sum)
+a = 0
+
+for i in range(N):
+    a += int(S[i])
+
+print(a)
