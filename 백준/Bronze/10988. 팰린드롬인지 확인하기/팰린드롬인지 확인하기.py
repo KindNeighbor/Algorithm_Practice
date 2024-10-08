@@ -1,8 +1,7 @@
-s = input()
+s1 = input()
+s2 = s1[::-1]
 
-for i in range(len(s) // 2):
-    if s[i] != s[len(s) - i - 1]:
-        print(0)
-        break
-else:
+if s1 == s2:
     print(1)
+else:
+    print(0)
