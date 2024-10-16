@@ -1,19 +1,19 @@
-n,m = map(int, input().split())
+N, M = map(int, input().split())
 
-matrix_A = []
-for _ in range(n):
-    row = list(map(int, input().split()))
-    matrix_A.append(row)
+A = [[0 for _ in range(M)] for _ in range(N)]
+B = [[0 for _ in range(M)] for _ in range(N)]
 
-matrix_B = []
-for _ in range(n):
-    row = list(map(int, input().split()))
-    matrix_B.append(row)
+for i in range(N):
+    list1 = list(map(int, input().split()))
+    for j in range(len(list1)):
+        A[i][j] = list1[j]
 
-result = []
-for i in range(n):
-    summed_row = [matrix_A[i][j] + matrix_B[i][j] for j in range(m)]
-    result.append(summed_row)
+for i in range(N):
+    list2 = list(map(int, input().split()))
+    for j in range(len(list1)):
+        B[i][j] = list2[j]
+        
+sum = [[A[i][j] + B[i][j] for j in range(M)] for i in range(N)]
 
-for row in result:
+for row in sum:
     print(' '.join(map(str, row)))
