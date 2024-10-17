@@ -1,18 +1,19 @@
-grid = []
+A = [[0 for _ in range(9)] for _ in range(9)]
 
-for _ in range(9):
-    row = list(map(int, input().split()))
-    grid.append(row)
+for i in range(9):
+    A[i] = list(map(int, input().split()))
+    
+max = 0
 
-max_value = -1
-max_position = (0, 0)
+idx1 = -1
+idx2 = -1
 
 for i in range(9):
     for j in range(9):
-        if grid[i][j] > max_value:
-            max_value = grid[i][j]
-            max_position = (i + 1, j + 1)
+        if max <= A[i][j]:
+            max = A[i][j]
+            idx1 = i
+            idx2 = j
 
-
-print(max_value)
-print(max_position[0], max_position[1])
+print(max)
+print(str(idx1 + 1) + " " + str(idx2 + 1))
