@@ -1,9 +1,13 @@
 N = int(input())
 
-idx = 2
-while(N > 1):
-    if N % idx == 0:
-        N /= idx
-        print(idx)
-    else:
-        idx += 1
+while N % 2 == 0:
+    print(2)
+    N //= 2
+
+for i in range(3, int(N ** 0.5) + 1, 2):
+    while N % i == 0:
+        print(i)
+        N //= i
+
+if N > 1:
+    print(N)
