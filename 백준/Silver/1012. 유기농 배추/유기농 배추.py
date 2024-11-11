@@ -4,9 +4,7 @@ sys.setrecursionlimit(10**6)
 T = int(sys.stdin.readline())
 
 def dfs(x, y):
-    global cnt
     graph[x][y] = '0'
-    cnt += 1
     
     for i in range(4):
         nx = x + dx[i]
@@ -31,7 +29,6 @@ for _ in range(T):
     for i in range(M):
         for j in range(N):
             if graph[i][j] == '1':
-                cnt = 0
                 dfs(i, j)
                 result += 1
      
