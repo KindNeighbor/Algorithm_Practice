@@ -7,16 +7,6 @@ dy = [0, 0, -1, 1, 0, 0]
 dz = [0, 0, 0, 0, -1, 1]
 
 def bfs():
-    visited = [[[0] * M for _ in range(N)] for _ in range(H)]
-    queue = deque()
-    
-    for i in range(H):
-        for j in range(N):
-            for k in range(M):
-                if graph[i][j][k] == 1:
-                    queue.append((i, j, k))
-                    visited[i][j][k] = 1
-    
     while queue:
         z, x, y = queue.popleft()
         
@@ -25,31 +15,34 @@ def bfs():
             nx = x + dx[i]
             ny = y + dy[i]
             
-            if 0 <= nz < H and 0 <= nx < N and 0 <= ny < M and graph[nz][nx][ny] == 0 and visited[nz][nx][ny] == 0:
+            if 0 <= nz < H and 0 <= nx < N and 0 <= ny < M and visited[nz][nx][ny] == 0:
                 visited[nz][nx][ny] = visited[z][x][y] + 1
-                graph[nz][nx][ny] = 1
                 queue.append((nz, nx, ny))
-     
+    
     result = -2
+    
     for i in range(H):
         for j in range(N):
             for k in range(M):
-                if graph[i][j][k] == 0:
+                if visited[i][j][k] == 0:
                     return -1
                 result = max(result, visited[i][j][k])
-                
+    
     if result == 1:
         return 0
     else:
         return result - 1
-
+    
 M, N, H = map(int, sys.stdin.readline().split())
-graph = []
+visited = [[[0] * M for _ in range(N)] for _ in range(H)]
+queue = deque()
+
 for i in range(H):
-    layer = []
     for j in range(N):
-        row = list(map(int, sys.stdin.readline().split()))
-        layer.append(row)
-    graph.append(layer)
-            
+        list1 = list(map(int, sys.stdin.readline().split()))
+        for k in range(M):
+            visited[i][j][k] = list1[k]
+            if visited[i][j][k] == 1:
+                queue.append((i, j, k))
+
 print(bfs())
