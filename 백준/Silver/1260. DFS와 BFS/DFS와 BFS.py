@@ -2,46 +2,46 @@ import sys
 from collections import deque
 sys.setrecursionlimit(10**6)
 
-def dfs(graph, R, visited_dfs):
-    result_dfs.append(R)
-    visited_dfs[R] = True
+def dfs(graph, V, dfs_visited):
+    dfs_visited[V] = True
     
-    for next_node in sorted(graph[R]):
-        if not visited_dfs[next_node]:
-            dfs(graph, next_node, visited_dfs)
-
-def bfs(graph, R):
-    visited_bfs = [False] * (N + 1)
-    result_bfs = []
-    visited_bfs[R] = True
-    queue = deque([R])
-    result_bfs.append(R)
+    for next_node in sorted(graph[V]):
+        if dfs_visited[next_node] is False:
+            dfs_order.append(next_node)
+            dfs(graph, next_node, dfs_visited)
+            
+def bfs(graph, V):
+    bfs_visited[V] = True
+    queue = deque([V])
     
     while queue:
         current = queue.popleft()
         
         for next_node in sorted(graph[current]):
-            if not visited_bfs[next_node]:
-                visited_bfs[next_node] = True
+            if bfs_visited[next_node] is False:
+                bfs_visited[next_node] = True
+                bfs_order.append(next_node)
                 queue.append(next_node)
-                result_bfs.append(next_node)
-                
-    return result_bfs
 
-N, M, R = map(int, sys.stdin.readline().split())
+N, M, V = map(int, sys.stdin.readline().split())
 
 graph = [[] for _ in range(N + 1)]
 
-for i in range(M):
+for _ in range(M):
     u, v = map(int, sys.stdin.readline().split())
     graph[u].append(v)
     graph[v].append(u)
     
-visited_dfs = [False] * (N + 1)
-result_dfs = []
+dfs_visited = [False] * (N + 1)
+bfs_visited = [False] * (N + 1)
+dfs_order = []
+bfs_order = []
 
-dfs(graph, R, visited_dfs)
-result_bfs = bfs(graph, R)
+dfs_order.append(V)
+bfs_order.append(V)
 
-print(*result_dfs)
-print(*result_bfs)
+dfs(graph, V, dfs_visited)
+bfs(graph, V)
+
+print(*dfs_order)
+print(*bfs_order)
