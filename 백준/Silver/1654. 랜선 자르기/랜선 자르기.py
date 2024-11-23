@@ -29,7 +29,6 @@ for i in range(K):
     if right < wires[i]:
         right = wires[i]
         
-right += 1
 left = 0
 
 bn_search(left, right)
